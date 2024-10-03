@@ -119,7 +119,7 @@ export default function DevPortfolio() {
                   <MapPin className="w-4 h-4" /> Albay, PH
                 </p>
                 <p className="text-gray-100 flex items-center gap-2">
-                  <LinkIcon className="w-4 h-4" /> johndoe.dev
+                  <LinkIcon className="w-4 h-4" /> <a href="https://portfolio-eta-nine-92.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
                 </p>
                 <p className="text-gray-100 flex items-center gap-2">
                   <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">@jaysonsenpai18</a>
