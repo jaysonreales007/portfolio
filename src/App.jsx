@@ -102,32 +102,30 @@ export default function DevPortfolio() {
           <div className="mt-16 flex justify-between items-start px-4">
             <div>
               <div className="flex flex-col gap-2 items-start justify-center">
-                <div className="flex flex-row items-center justify-center gap-2">
-                  <h1 className="text-2xl font-bold text-white">Jayson N. Reales</h1>
+                <div className="flex flex-row items-center justify-center gap-2 mt-3">
+                  <h1 className="text-lg lg:text-2xl font-bold text-white">Jayson N. Reales</h1>
                   <RiVerifiedBadgeFill className="w-6 h-6 text-blue-500" />
                 </div>
                 <p className="text-gray-500">@senpaiii-kun.base.eth</p>
               </div>
 
-              <div className="flex flex-col gap-1 mt-6">
-                <p className="text-gray-100 flex items-center gap-2">
-                  <IdCard className="w-4 h-4" /> Developer | Cat Town Resident
+              <div className="flex flex-col mt-6 gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
+                  <IdCard className="w-4 h-4" /> Developer
                 </p>
-              </div>
-              <div className="flex flex-col gap-1 mt-2">
-                <p className="mt-2 text-gray-100 flex items-center gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <MapPin className="w-4 h-4" /> Albay, PH
                 </p>
-                <p className="text-gray-100 flex items-center gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <LinkIcon className="w-4 h-4" /> <a href="https://jayson-dev.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
                 </p>
-                <p className="text-gray-100 flex items-center gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">@jaysonsenpai18</a>
                 </p>
-                <p className="text-gray-100 flex items-center gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">@swenpai</a>
                 </p>
-                <p className="text-gray-100 flex items-center gap-2">
+                <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <CalendarDays className="w-4 h-4" /> Joined September 2021
                 </p>
               </div>
@@ -136,18 +134,18 @@ export default function DevPortfolio() {
               href="./docs/Jayson Reales Resume.pdf"
               target="_blank"
               download="JaysonReales_Resume.pdf"
-              className="px-4 py-2 bg-blue-500 -mt-12 mr-4 text-white rounded-full hover:bg-blue-600 transition-colors flex items-center"
+              className="py-3 px-3 lg:px-4 lg:py-2 bg-blue-500 text-sm text-white rounded-full hover:bg-blue-600 transition-colors flex items-center"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
                 <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
               </svg>
-              Resume/CV
+              Resume
             </a>
           </div>
         </header>
 
         <div className="mt-2">
-          <div className="flex items-center justify-between border-b lg:border-b lg:justify-start">
+          <div className="flex items-center justify-center border-b lg:justify-start lg:gap-5 text-sm">
             {["Home", "Projects", "Skills", "About", "Contact"].map((tab) => (
               <button
                 key={tab}
@@ -166,18 +164,17 @@ export default function DevPortfolio() {
             {activeTab === "home" && (
               <div>
                 <div className="space-y-4 px-4">
-                  <h2 className="text-white text-2xl font-bold mb-6 mt-6">Recent Posts</h2>
+                  <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Recent Posts</h2>
                   {posts.map((post) => (
                     <div key={post.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
                       <div className="flex items-start space-x-3">
                         <img src="./images/photo1.jpg" alt="User Avatar" className="w-12 h-12 rounded-full" />
                         <div className="flex-1">
-                          <div className="flex items-center space-x-2">
-                            <h3 className="font-bold text-gray-900 dark:text-white">Jayson N. Reales</h3>
-                            <span className="text-gray-500 dark:text-gray-400">@senpaiii-kun.base.eth</span>
-                            <span className="text-gray-500 dark:text-gray-400">· 1h</span>
+                          <div className="flex items-center justify-between space-x-2">
+                            <h3 className="font-bold text-gray-900 dark:text-white text-sm">Jayson N. Reales</h3>
+                            <span className="text-gray-500 dark:text-gray-400">1h</span>
                           </div>
-                          <p className="mt-1 text-gray-900 dark:text-white">{post.content}</p>
+                          <p className="mt-2 text-gray-900 dark:text-white text-sm text-start">{post.content}</p>
                           {post.images && post.images.length > 0 && (
                             <div className="mt-2 grid grid-cols-1 gap-2">
                               {post.images.map((image, index) => (
@@ -219,7 +216,7 @@ export default function DevPortfolio() {
             )}
             {activeTab === "projects" && (
               <div className="px-4">
-                <h2 className="text-white text-2xl font-bold mb-6 mt-6">Projects</h2>
+                <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Projects</h2>
                 {loading ? (
                   <p className="text-white">Loading projects...</p>
                 ) : error ? (
@@ -263,7 +260,7 @@ export default function DevPortfolio() {
             )}
             {activeTab === "skills" && (
               <div className="px-4">
-                <h2 className="text-white text-2xl font-bold mb-6 mt-6">Skills</h2>
+                <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Skills</h2>
                 <div className="relative overflow-hidden">
                   <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
                   <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
@@ -271,7 +268,7 @@ export default function DevPortfolio() {
                   <Marquee gradient={false} speed={40}>
                     <div className="flex items-center py-2 gap-4 px-4">
                       {skills.map((skill) => (
-                        <div key={skill.name} className="flex items-center bg-blue-500 text-white px-4 py-2 rounded-full text-sm">
+                        <div key={skill.name} className="flex items-center bg-blue-500 text-white px-2 py-2 text-sm lg:px-4 lg:py-2 rounded-full lg:text-sm">
                           <skill.icon className="w-5 h-5 mr-2" />
                           <span>{skill.name}</span>
                         </div>
@@ -283,14 +280,14 @@ export default function DevPortfolio() {
             )}
             {activeTab === "about" && (
               <div className="px-4">
-                <h2 className="text-white text-2xl font-bold mb-6 mt-6">About</h2>
+                <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">About</h2>
                 <div className="bg-white p-4 rounded-lg shadow mb-6">
-                  <p className="text-gray-700 text-justify">
-                    👋 Hi there! I'm Jayson, a passionate developer from Albay, PH. I love creating web applications and exploring new technologies. When I'm not coding, you can find me playing with my cats or trying out new coffee shops. Let's connect and build something awesome together!
+                  <p className="text-gray-700 text-justify text-sm">
+                    Hi there! I'm Jayson, a passionate developer from Albay, PH. I love creating web applications and exploring new technologies. When I'm not coding, you can find me playing with my cats or trying out new coffee shops. Let's connect and build something awesome together!
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg shadow mb-6">
+                <div className="bg-white p-4 rounded-lg shadow mb-6 text-lg">
                   <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
@@ -298,7 +295,7 @@ export default function DevPortfolio() {
                         <LinkIcon className="w-4 h-4 text-blue-500" />
                       </div>
                       <div>
-                        <p className="font-semibold">Updated portfolio website</p>
+                        <p className="font-semibold text-sm">Updated portfolio website</p>
                         <p className="text-sm text-gray-500">2 days ago</p>
                       </div>
                     </li>
@@ -307,7 +304,7 @@ export default function DevPortfolio() {
                         <Repeat2 className="w-4 h-4 text-green-500" />
                       </div>
                       <div>
-                        <p className="font-semibold">Contributed to open-source project</p>
+                        <p className="font-semibold text-sm">Contributed to open-source project</p>
                         <p className="text-sm text-gray-500">1 week ago</p>
                       </div>
                     </li>
@@ -317,7 +314,7 @@ export default function DevPortfolio() {
             )}
             {activeTab === "contact" && (
               <div className="px-4">
-                <h2 className="text-white text-2xl font-bold mb-6 mt-6">Contact</h2>
+                <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Contact</h2>
                 <form className="space-y-4">
                   <input
                     type="text"
