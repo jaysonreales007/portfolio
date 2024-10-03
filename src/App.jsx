@@ -5,6 +5,7 @@ import axios from "axios"
 import Marquee from 'react-fast-marquee';
 import { FaReact, FaNodeJs, FaFacebook  } from 'react-icons/fa';
 import { SiJavascript, SiGraphql, SiTailwindcss, SiFarcaster  } from 'react-icons/si';
+import { ClipLoader } from "react-spinners"; // Add this import
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
@@ -75,6 +76,14 @@ export default function DevPortfolio() {
     { name: 'GraphQL', icon: SiGraphql },
     { name: 'Tailwind CSS', icon: SiTailwindcss },
   ];
+
+  if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-gray-900">
+        <ClipLoader color="#3B82F6" size={50} />
+      </div>
+    )
+  }
 
   return (
     <SimpleBar className="scrollbar-thin scrollbar-thumb-custom scrollbar-track-gray-lighter" style={{ maxHeight: '100vh' }}>
