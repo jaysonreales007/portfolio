@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react"
-import { CalendarDays, Link as LinkIcon, MapPin, MessageCircle, Repeat2, Heart, IdCard } from "lucide-react"
+import { CalendarDays, Globe, MapPin, MessageCircle, Repeat2, Heart, IdCard, CheckCircle, Award } from "lucide-react"
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import axios from "axios"
 import Marquee from 'react-fast-marquee';
 import { FaReact, FaNodeJs, FaFacebook  } from 'react-icons/fa';
 import { SiJavascript, SiGraphql, SiTailwindcss, SiFarcaster  } from 'react-icons/si';
 import { ClipLoader } from "react-spinners"; // Add this import
+import { Code, Server, Smartphone, Palette, Database, Cloud } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
@@ -32,9 +34,36 @@ export default function DevPortfolio() {
       /* images: ["./images/farcast.jpg", "./images/farcast-notif.jpg"] */
     }
   ])
-  const [projects, setProjects] = useState([])
+  const [projects] = useState([
+    { id: 1, title: "E-commerce Platform", description: "A full-stack e-commerce solution with React and Node.js", technologies: ["React", "Node.js", "MongoDB"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 2, title: "Weather App", description: "Real-time weather forecasting app using OpenWeatherMap API", technologies: ["JavaScript", "API Integration"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 3, title: "Task Manager", description: "A Kanban-style task management application", technologies: ["Vue.js", "Vuex", "Firebase"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 4, title: "Portfolio Website", description: "A Kanban-style task management application", technologies: ["Vue.js", "Vuex", "Firebase"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 5, title: "Blogging Platform", description: "A full-featured blogging system with user authentication", technologies: ["Django", "PostgreSQL"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 6, title: "Fitness Tracker", description: "Mobile app for tracking workouts and nutrition", technologies: ["React Native", "Redux"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 7, title: "Chat Application", description: "Real-time chat app with websockets", technologies: ["Socket.io", "Express"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 8, title: "Movie Database", description: "Web app for browsing and rating movies", technologies: ["Angular", "TMDb API"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 9, title: "Recipe Finder", description: "App to find recipes based on available ingredients", technologies: ["React", "Spoonacular API"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 10, title: "Budget Tracker", description: "Personal finance management application", technologies: ["Vue.js", "Chart.js"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 11, title: "Social Media Dashboard", description: "Analytics dashboard for social media accounts", technologies: ["React", "D3.js"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 12, title: "News Aggregator", description: "Personalized news feed from multiple sources", technologies: ["Python", "Flask", "News API"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+  ])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [projectsPerPage, setProjectsPerPage] = useState(5)
+
+  useEffect(() => {
+    const handleResize = () => {
+      setProjectsPerPage(window.innerWidth >= 1024 ? 9 : 5)
+      setCurrentPage(1); // Reset to first page on resize
+    }
+
+    window.addEventListener('resize', handleResize)
+    handleResize(); // Set initial value
+
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -77,6 +106,12 @@ export default function DevPortfolio() {
     { name: 'Tailwind CSS', icon: SiTailwindcss },
   ];
 
+  const indexOfLastProject = currentPage * projectsPerPage
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage
+  const currentProjects = projects.slice(indexOfFirstProject, indexOfLastProject)
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber)
+
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen bg-gray-900">
@@ -86,7 +121,8 @@ export default function DevPortfolio() {
   }
 
   return (
-    <SimpleBar className="scrollbar-thin scrollbar-thumb-custom scrollbar-track-gray-lighter" style={{ maxHeight: '100vh' }}>
+    <>
+      <SimpleBar className="scrollbar-thin scrollbar-thumb-custom scrollbar-track-gray-lighter" style={{ maxHeight: '100vh' }}>
       <div className="container mx-auto max-w-3xl px-4">
         <header className="py-2">
           <div className="relative">
@@ -117,7 +153,7 @@ export default function DevPortfolio() {
                   <MapPin className="w-4 h-4" /> Albay, PH
                 </p>
                 <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <LinkIcon className="w-4 h-4" /> <a href="https://jayson-dev.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
+                  <Globe className="w-4 h-4" /> <a href="https://jayson-dev.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
                 </p>
                 <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">@jaysonsenpai18</a>
@@ -145,16 +181,16 @@ export default function DevPortfolio() {
         </header>
 
         <div className="mt-2">
-          <div className="flex items-center justify-center border-b lg:justify-start lg:gap-5 text-sm">
-            {["Home", "Projects", "Skills", "About", "Contact"].map((tab) => (
+          <div className="flex items-center justify-start border-b text-sm w-full overflow-x-auto lg:justify-start lg:gap-5">
+            {["Home", "Projects", "Skills", "Services", "About", "Contact"].map((tab, index) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab.toLowerCase())}
-                className={`px-4 py-2 ${
+                className={`relative px-4 py-2 flex-shrink-0 ${
                   activeTab === tab.toLowerCase()
                     ? "border-b-4 border-blue-500 font-bold text-gray-200"
                     : "text-gray-600"
-                }`}
+                } ${index >= 4 ? "lg:flex" : ""}`}
               >
                 {tab}
               </button>
@@ -166,7 +202,7 @@ export default function DevPortfolio() {
                 <div className="space-y-4 px-4">
                   <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Recent Posts</h2>
                   {posts.map((post) => (
-                    <div key={post.id} className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+                    <div key={post.id} className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow">
                       <div className="flex items-start space-x-3">
                         <img src="./images/photo1.jpg" alt="User Avatar" className="w-12 h-12 rounded-full" />
                         <div className="flex-1">
@@ -217,51 +253,72 @@ export default function DevPortfolio() {
             {activeTab === "projects" && (
               <div className="px-4">
                 <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Projects</h2>
-                {loading ? (
-                  <p className="text-white">Loading projects...</p>
-                ) : error ? (
-                  <p className="text-red-500">{error}</p>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {projects.map((project) => (
-                      <div key={project.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105">
-                        <div className="p-6">
-                          <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-2">{project.title}</h3>
-                          <p className="text-gray-600 dark:text-gray-300 mb-4">{project.description || "No description available"}</p>
-                          <div className="flex flex-wrap gap-2 mb-4">
-                            {project.technologies.map((tech) => (
-                              <span key={tech} className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                                {tech}
-                              </span>
-                            ))}
-                            {project.language && (
-                              <span className="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300">
-                                {project.language}
-                              </span>
-                            )}
-                          </div>
-                          <div className="flex justify-between items-center">
-                            <div className="flex items-center space-x-4">
-                              <span className="text-gray-600 dark:text-gray-400">⭐ {project.stars}</span>
-                              <span className="text-gray-600 dark:text-gray-400">🍴 {project.forks}</span>
-                            </div>
-                            <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-gray-800">
-                              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                              </svg>
-                            </a>
-                          </div>
+                <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
+                  {currentProjects.map((project) => (
+                    <div 
+                      key={project.id} 
+                      className={`bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden transition-transform duration-300 hover:scale-105 mb-6 break-inside-avoid ${
+                        project.size === 'sm' ? 'h-96' :
+                        project.size === 'md' ? 'h-112' :
+                        'h-128'
+                      }`}
+                    >
+                      <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                      <div className="p-4 h-full flex flex-col">
+                        <h3 className="text-sm lg:text-lg font-semibold text-gray-800 dark:text-white mb-2">{project.title}</h3>
+                        <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm">{project.description}</p>
+                        <div className="flex flex-wrap gap-2 mt-auto">
+                          {project.technologies.map((tech) => (
+                            <span key={tech} className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                              {tech}
+                            </span>
+                          ))}
                         </div>
                       </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Pagination */}
+                <div className="flex justify-center mt-8">
+                  <nav className="inline-flex rounded-md shadow">
+                    <button
+                      onClick={() => paginate(currentPage - 1)}
+                      disabled={currentPage === 1}
+                      className="px-3 py-2 rounded-l-md border border-gray-300 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50"
+                    >
+                      <ChevronLeft className="h-5 w-5" />
+                    </button>
+                    {Array.from({ length: Math.ceil(projects.length / projectsPerPage) }).map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => paginate(index + 1)}
+                        className={`px-4 py-2 border border-gray-300 text-sm font-medium ${
+                          currentPage === index + 1
+                            ? 'bg-blue-500 text-white'
+                            : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
+                        }`}
+                      >
+                        {index + 1}
+                      </button>
                     ))}
-                  </div>
-                )}
+                    <button
+                      onClick={() => paginate(currentPage + 1)}
+                      disabled={currentPage === Math.ceil(projects.length / projectsPerPage)}
+                      className="px-3 py-2 rounded-r-md border border-gray-300 bg-white dark:bg-gray-800 text-sm font-medium text-gray-500 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700 disabled:opacity-50"
+                    >
+                      <ChevronRight className="h-5 w-5" />
+                    </button>
+                  </nav>
+                </div>
               </div>
             )}
             {activeTab === "skills" && (
               <div className="px-4">
                 <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Skills</h2>
-                <div className="relative overflow-hidden">
+               
+                {/* Marquee section */}
+                <div className="relative overflow-hidden mb-8">
                   <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-gray-900 to-transparent z-10"></div>
                   <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-gray-900 to-transparent z-10"></div>
 
@@ -276,36 +333,209 @@ export default function DevPortfolio() {
                     </div>
                   </Marquee>
                 </div>
+
+                {/* Skill categories */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <h3 className="text-white text-lg font-semibold mb-4">Frontend Development</h3>
+                    <ul className="space-y-2">
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        React.js & React Native
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        Vue.js
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        HTML5, CSS3, JavaScript (ES6+)
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        Responsive Web Design
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div className="bg-gray-800 p-6 rounded-lg">
+                    <h3 className="text-white text-lg font-semibold mb-4">Backend Development</h3>
+                    <ul className="space-y-2">
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        Node.js & Express.js
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        Python & Django
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        RESTful API Design
+                      </li>
+                      <li className="text-gray-300 flex items-center">
+                        <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                        Database Management (SQL & NoSQL)
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                {/* Skill progress bars */}
+                <div className="mt-8">
+                  <h3 className="text-white text-lg font-semibold mb-4">Proficiency</h3>
+                  <div className="space-y-4">
+                    {[
+                      { skill: "JavaScript", proficiency: 90 },
+                      { skill: "React", proficiency: 85 },
+                      { skill: "Node.js", proficiency: 80 },
+                      { skill: "Python", proficiency: 75 },
+                      { skill: "GraphQL", proficiency: 70 },
+                    ].map((item) => (
+                      <div key={item.skill}>
+                        <div className="flex justify-between mb-1">
+                          <span className="text-sm font-medium text-white">{item.skill}</span>
+                          <span className="text-sm font-medium text-white">{item.proficiency}%</span>
+                        </div>
+                        <div className="w-full bg-gray-700 rounded-full h-2.5">
+                          <div
+                            className="bg-blue-600 h-2.5 rounded-full"
+                            style={{ width: `${item.proficiency}%` }}
+                          ></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Certifications */}
+                <div className="mt-8">
+                  <h3 className="text-white text-lg font-semibold mb-4">Certifications</h3>
+                  <ul className="space-y-2">
+                    <li className="text-gray-300 flex items-center">
+                      <Award className="w-4 h-4 mr-2 text-yellow-500" />
+                      AWS Certified Developer - Associate
+                    </li>
+                    <li className="text-gray-300 flex items-center">
+                      <Award className="w-4 h-4 mr-2 text-yellow-500" />
+                      Google Cloud Certified - Professional Cloud Developer
+                    </li>
+                    <li className="text-gray-300 flex items-center">
+                      <Award className="w-4 h-4 mr-2 text-yellow-500" />
+                      MongoDB Certified Developer Associate
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            )}
+            {activeTab === "services" && (
+              <div className="px-4">
+                <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Services</h2>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Code className="w-8 h-8 text-blue-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Web Development</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Custom web applications built with modern frameworks like React, Vue.js, and Angular. Responsive design and seamless user experiences.
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Server className="w-8 h-8 text-green-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Backend Development</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Robust server-side solutions using Node.js, Express, and Python. API development, database design, and server management.
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Smartphone className="w-8 h-8 text-purple-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Mobile App Development</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Cross-platform mobile applications using React Native. Native-like performance with code reusability for iOS and Android.
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Palette className="w-8 h-8 text-yellow-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">UI/UX Design</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Intuitive and visually appealing interfaces. User-centered design approach with a focus on usability and accessibility.
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Database className="w-8 h-8 text-red-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Database Design</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Efficient database architectures for SQL and NoSQL systems. Data modeling, optimization, and migration services.
+                    </p>
+                  </div>
+
+                  <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                    <div className="flex items-center mb-4">
+                      <Cloud className="w-8 h-8 text-indigo-500 mr-3" />
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Cloud Solutions</h3>
+                    </div>
+                    <p className="text-gray-600 dark:text-gray-300 text-sm">
+                      Deployment and management of applications on cloud platforms like AWS, Google Cloud, and Azure. Scalable and cost-effective solutions.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+                  <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Why Choose My Services?</h3>
+                  <ul className="list-disc list-inside space-y-2 text-gray-600 dark:text-gray-300 text-sm">
+                    <li>Tailored solutions to meet your specific business needs</li>
+                    <li>Expertise in the latest technologies and best practices</li>
+                    <li>Commitment to delivering high-quality, scalable, and maintainable code</li>
+                    <li>Clear communication and collaborative approach throughout the project</li>
+                    <li>Ongoing support and maintenance after project completion</li>
+                  </ul>
+                </div>
               </div>
             )}
             {activeTab === "about" && (
               <div className="px-4">
                 <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">About</h2>
-                <div className="bg-white p-4 rounded-lg shadow mb-6">
-                  <p className="text-gray-700 text-justify text-sm">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
+                  <p className="text-gray-700 dark:text-gray-300 text-justify text-sm">
                     Hi there! I'm Jayson, a passionate developer from Albay, PH. I love creating web applications and exploring new technologies. When I'm not coding, you can find me playing with my cats or trying out new coffee shops. Let's connect and build something awesome together!
                   </p>
                 </div>
 
-                <div className="bg-white p-4 rounded-lg shadow mb-6 text-lg">
-                  <h2 className="text-xl font-semibold mb-4">Recent Activity</h2>
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
+                  <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">Recent Activity</h2>
                   <ul className="space-y-4">
                     <li className="flex items-start gap-3">
-                      <div className="bg-blue-100 p-2 rounded-full">
-                        <LinkIcon className="w-4 h-4 text-blue-500" />
+                      <div className="bg-blue-100 dark:bg-blue-900 p-2 rounded-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clipRule="evenodd" />
+                        </svg>
                       </div>
                       <div>
-                        <p className="font-semibold text-sm">Updated portfolio website</p>
-                        <p className="text-sm text-gray-500">2 days ago</p>
+                        <p className="font-semibold text-sm text-gray-900 dark:text-white">Updated portfolio website</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">2 days ago</p>
                       </div>
                     </li>
                     <li className="flex items-start gap-3">
-                      <div className="bg-green-100 p-2 rounded-full">
+                      <div className="bg-green-100 dark:bg-green-900 p-2 rounded-full">
                         <Repeat2 className="w-4 h-4 text-green-500" />
                       </div>
                       <div>
-                        <p className="font-semibold text-sm">Contributed to open-source project</p>
-                        <p className="text-sm text-gray-500">1 week ago</p>
+                        <p className="font-semibold text-sm text-gray-900 dark:text-white">Contributed to open-source project</p>
+                        <p className="text-sm text-gray-500 dark:text-gray-400">1 week ago</p>
                       </div>
                     </li>
                   </ul>
@@ -342,7 +572,14 @@ export default function DevPortfolio() {
             )}
           </div>
         </div>
+        <footer className="bg-gray-800 text-white py-2 mt-6">
+          <div className="flex flex-col gap-1 container mx-auto text-center">
+            <p className="text-sm">© {new Date().getFullYear()} Jayson N. Reales.</p>
+            <p className="text-sm"> All rights reserved.</p>
+          </div>
+        </footer>
       </div>
     </SimpleBar>
+    </>
   )
 }

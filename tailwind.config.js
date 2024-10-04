@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        'spartan': ['"Arimo"', 'sans-serif'], // {{ edit_1 }}
+      },
+    },
   },
   plugins: [
     function({ addUtilities }) {
