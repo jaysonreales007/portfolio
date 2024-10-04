@@ -17,10 +17,8 @@ import Swal from 'sweetalert2';
 export default function DevPortfolio() {
   const [activeTab, setActiveTab] = useState("home")
   const [posts, setPosts] = useState([
-    /* { id: 1, content: "Just launched a new React project! Check it out: https://example.com", likes: 15, comments: 3, reposts: 5 },
-    { id: 2, content: "Excited to start learning Rust this week. Any recommended resources?", likes: 10, comments: 7, reposts: 2 }, */
     { 
-      id: 3, 
+      id: 1, 
       content: "I started playing Cat Town - Welcome to Cat Town, an idle game built on Base, driven by a self-sustainable, fair economy. Purchase cats and combine floofs to increase your ETH yield and $KIBBLE rewards.",
       likes: 15,
       comments: 3,
@@ -28,7 +26,7 @@ export default function DevPortfolio() {
       /* images: ["./images/cat-town.jpg"] */
     },
     {
-      id: 4,
+      id: 2,
       content: "Just started using Farcaster - A protocol for building sufficiently decentralized social networks.",
       likes: 10,
       comments: 8,
@@ -194,10 +192,10 @@ export default function DevPortfolio() {
                   <Globe className="w-4 h-4" /> <a href="https://jayson-dev.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
                 </p>
                 <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">@jaysonsenpai18</a>
+                  <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">jaysonsenpai18</a>
                 </p>
                 <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">@swenpai</a>
+                  <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">swenpai</a>
                 </p>
                 <p className="text-gray-100 flex items-center gap-2 text-sm">
                   <CalendarDays className="w-4 h-4" /> Joined September 2021
