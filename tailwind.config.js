@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'spartan': ['"Arimo"', 'sans-serif'], // {{ edit_1 }}
+        'spartan': ['"Arimo"', 'sans-serif'],
       },
     },
   },
@@ -29,6 +29,9 @@ export default {
         '.scrollbar-track-gray-lighter': {
           '&::-webkit-scrollbar-track': {
             backgroundColor: 'rgba(229, 231, 235, 0.1)',
+          },
+          '.pointer-events-none': {
+            'pointer-events': 'none',
           },
         },
       }
