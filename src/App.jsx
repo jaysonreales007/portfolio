@@ -119,6 +119,7 @@ export default function DevPortfolio() {
         title: 'Message Sent!',
         text: 'Your message has been sent successfully.',
         position: isMobile ? 'top' : 'top-end',
+        timer: 2000,
         toast: true
       });
     }, (err) => {
@@ -129,6 +130,7 @@ export default function DevPortfolio() {
         title: 'Message Failed!',
         text: 'There was an error sending your message. Please try again later.',
         position: isMobile ? 'top' : 'top-end',
+        timer: 2000,
         toast: true
       });
     });
@@ -173,7 +175,7 @@ export default function DevPortfolio() {
           </div>
           <div className="mt-16 flex justify-between items-start px-4">
             <div>
-              <div className="flex flex-col gap-2 items-start justify-center">
+              <div className="flex flex-col items-start justify-center">
                 <div className="flex flex-row items-center justify-center gap-2 mt-3">
                   <h1 className="text-lg lg:text-2xl font-bold text-white">Jayson N. Reales</h1>
                   <RiVerifiedBadgeFill className="w-6 h-6 text-blue-500" />
