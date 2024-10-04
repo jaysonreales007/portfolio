@@ -7,7 +7,7 @@ const copyToClipboard = (text) => {
         Swal.fire({
           icon: 'success',
           title: 'Copied!',
-          text: `Username has been copied to your clipboard.`,
+          text: `Base name has been copied to your clipboard.`,
           timer: 2000,
           showConfirmButton: false,
           position: isMobile ? 'top' : 'top-end',
