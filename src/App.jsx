@@ -11,6 +11,8 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import emailjs from 'emailjs-com';
+import Swal from 'sweetalert2';
 
 export default function DevPortfolio() {
   const [activeTab, setActiveTab] = useState("home")
@@ -52,6 +54,7 @@ export default function DevPortfolio() {
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [projectsPerPage, setProjectsPerPage] = useState(5)
+  const [fileName, setFileName] = useState('')
 
   useEffect(() => {
     const handleResize = () => {
@@ -90,13 +93,46 @@ export default function DevPortfolio() {
 
     fetchProjects()
   }, [])
-
+  const isMobile = window.innerWidth <= 768;
   const handlePostSubmit = (e) => {
-    e.preventDefault()
-    const content = e.target.post.value
-    setPosts([{ id: posts.length + 1, content, likes: 0, comments: 0, reposts: 0 }, ...posts])
-    e.target.reset()
-  }
+    e.preventDefault();
+    const name = e.target[0].value;
+    const email = e.target[1].value;
+    const message = e.target[2].value;
+    const file = e.target[3].files[0]; // Get the attached file
+
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('message', message);
+    if (file) {
+      formData.append('file', file); // Append the file if it exists
+    }
+
+    emailjs.send('service_qorqqe9', 'template_mmaedd6', formData, 'R2a8WVrnM9AfD8Ayx')
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
+      e.target.reset(); // Reset the form after successful submission
+      // Display success message
+      Swal.fire({
+        icon: 'success',
+        title: 'Message Sent!',
+        text: 'Your message has been sent successfully.',
+        position: isMobile ? 'top' : 'top-end',
+        toast: true
+      });
+    }, (err) => {
+      console.error('FAILED...', err);
+      // Display error message
+      Swal.fire({
+        icon: 'error',
+        title: 'Message Failed!',
+        text: 'There was an error sending your message. Please try again later.',
+        position: isMobile ? 'top' : 'top-end',
+        toast: true
+      });
+    });
+  };
 
   const skills = [
     { name: 'React', icon: FaReact },
@@ -545,22 +581,50 @@ export default function DevPortfolio() {
             {activeTab === "contact" && (
               <div className="px-4">
                 <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">Contact</h2>
-                <form className="space-y-4">
+                <form className="space-y-4" onSubmit={handlePostSubmit}>
                   <input
                     type="text"
                     placeholder="Your Name"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                   <input
                     type="email"
                     placeholder="Your Email"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    required
                   />
                   <textarea
                     placeholder="Your Message"
                     className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     rows="4"
+                    required
                   ></textarea>
+
+                  {/* File Upload Section */}
+                  <div className="flex items-center justify-between border border-gray-300 rounded-md p-2">
+                    <label className="flex items-center cursor-pointer">
+                      <input
+                        type="file"
+                        className="hidden"
+                        onChange={(e) => {
+                          const fileName = e.target.files[0]?.name;
+                          if (fileName) {
+                            setFileName(fileName); // Assuming you have a state to hold the file name
+                          }
+                        }}
+                      />
+                      <span className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors">
+                        Choose File
+                      </span>
+                      
+                      <span className="ml-2 text-white">Upload a file</span>
+                    </label>
+                    {fileName && (
+                      <span className="text-gray-600">{fileName}</span> // Display the selected file name
+                    )}
+                  </div>
+
                   <button
                     type="submit"
                     className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
