@@ -17,8 +17,6 @@ import Swal from 'sweetalert2';
 export default function DevPortfolio() {
   const [activeTab, setActiveTab] = useState("home")
   const [posts, setPosts] = useState([
-    /* { id: 1, content: "Just launched a new React project! Check it out: https://example.com", likes: 15, comments: 3, reposts: 5 },
-    { id: 2, content: "Excited to start learning Rust this week. Any recommended resources?", likes: 10, comments: 7, reposts: 2 }, */
     { 
       id: 3, 
       content: "I started playing Cat Town - Welcome to Cat Town, an idle game built on Base, driven by a self-sustainable, fair economy. Purchase cats and combine floofs to increase your ETH yield and $KIBBLE rewards.",
@@ -94,26 +92,23 @@ export default function DevPortfolio() {
     fetchProjects()
   }, [])
   const isMobile = window.innerWidth <= 768;
+
   const handlePostSubmit = (e) => {
     e.preventDefault();
     const name = e.target[0].value;
     const email = e.target[1].value;
     const message = e.target[2].value;
-    const file = e.target[3].files[0]; // Get the attached file
 
     const formData = new FormData();
     formData.append('name', name);
     formData.append('email', email);
     formData.append('message', message);
-    if (file) {
-      formData.append('file', file); // Append the file if it exists
-    }
+    console.log(JSON.stringify(formData))
 
     emailjs.send('service_qorqqe9', 'template_mmaedd6', formData, 'R2a8WVrnM9AfD8Ayx')
     .then((response) => {
-      console.log('SUCCESS!', response.status, response.text);
-      e.target.reset(); // Reset the form after successful submission
-      // Display success message
+      e.target.reset(); 
+      
       Swal.fire({
         icon: 'success',
         title: 'Message Sent!',
@@ -123,7 +118,6 @@ export default function DevPortfolio() {
         toast: true
       });
     }, (err) => {
-      console.error('FAILED...', err);
       // Display error message
       Swal.fire({
         icon: 'error',
@@ -604,7 +598,7 @@ export default function DevPortfolio() {
                   ></textarea>
 
                   {/* File Upload Section */}
-                  <div className="flex items-center justify-between border border-gray-300 rounded-md p-2">
+                  {/* <div className="flex items-center justify-between border border-gray-300 rounded-md p-2">
                     <label className="flex items-center cursor-pointer">
                       <input
                         type="file"
@@ -625,7 +619,7 @@ export default function DevPortfolio() {
                     {fileName && (
                       <span className="text-gray-600">{fileName}</span> // Display the selected file name
                     )}
-                  </div>
+                  </div> */}
 
                   <button
                     type="submit"
