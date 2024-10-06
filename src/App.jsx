@@ -8,17 +8,17 @@ import { SiJavascript, SiGraphql, SiTailwindcss, SiFarcaster  } from 'react-icon
 import { ClipLoader } from "react-spinners"; // Add this import
 import { Code, Server, Smartphone, Palette, Database, Cloud } from 'lucide-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-
-import SimpleBar from 'simplebar-react';
 import 'simplebar-react/dist/simplebar.min.css';
+import SimpleBar from 'simplebar-react';
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
+import Header from './Components/Header';
 
 export default function DevPortfolio() {
   const [activeTab, setActiveTab] = useState("home")
   const [posts, setPosts] = useState([
     { 
-      id: 3, 
+      id: 1, 
       content: "I started playing Cat Town - Welcome to Cat Town, an idle game built on Base, driven by a self-sustainable, fair economy. Purchase cats and combine floofs to increase your ETH yield and $KIBBLE rewards.",
       likes: 15,
       comments: 3,
@@ -26,7 +26,7 @@ export default function DevPortfolio() {
       /* images: ["./images/cat-town.jpg"] */
     },
     {
-      id: 4,
+      id: 2,
       content: "Just started using Farcaster - A protocol for building sufficiently decentralized social networks.",
       likes: 10,
       comments: 8,
@@ -38,7 +38,7 @@ export default function DevPortfolio() {
     { id: 1, title: "E-commerce Platform", description: "A full-stack e-commerce solution with React and Node.js", technologies: ["React", "Node.js", "MongoDB"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { id: 2, title: "Weather App", description: "Real-time weather forecasting app using OpenWeatherMap API", technologies: ["JavaScript", "API Integration"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { id: 3, title: "Task Manager", description: "A Kanban-style task management application", technologies: ["Vue.js", "Vuex", "Firebase"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-    { id: 4, title: "Portfolio Website", description: "A Kanban-style task management application", technologies: ["Vue.js", "Vuex", "Firebase"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+    { id: 4, title: "Portfolio Website", description: "A Kanban-style task management application", technologies: ["Vue.js", "Vuex", "Firebase"], size: "md", image: "./images/portfolio.png" },
     { id: 5, title: "Blogging Platform", description: "A full-featured blogging system with user authentication", technologies: ["Django", "PostgreSQL"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { id: 6, title: "Fitness Tracker", description: "Mobile app for tracking workouts and nutrition", technologies: ["React Native", "Redux"], size: "md", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
     { id: 7, title: "Chat Application", description: "Real-time chat app with websockets", technologies: ["Socket.io", "Express"], size: "lg", image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
@@ -156,61 +156,7 @@ export default function DevPortfolio() {
     <>
       <SimpleBar className="scrollbar-thin scrollbar-thumb-custom scrollbar-track-gray-lighter" style={{ maxHeight: '100vh' }}>
       <div className="container mx-auto max-w-3xl px-4">
-        <header className="py-2">
-          <div className="relative">
-            <img
-              src="./images/cover.png"
-              alt="Cover"
-              className="w-full h-48 object-cover rounded-lg"
-            />
-            <div className="absolute bottom-0 left-4 transform translate-y-1/2 w-32 h-32 rounded-full overflow-hidden border-4 border-white">
-              <img src="./images/photo1.jpg" alt="@developer" className="w-full h-full object-cover" />
-            </div>
-          </div>
-          <div className="mt-16 flex justify-between items-start px-4">
-            <div>
-              <div className="flex flex-col items-start justify-center">
-                <div className="flex flex-row items-center justify-center gap-2 mt-3">
-                  <h1 className="text-lg lg:text-2xl font-bold text-white">Jayson N. Reales</h1>
-                  <RiVerifiedBadgeFill className="w-6 h-6 text-blue-500" />
-                </div>
-                <p className="text-gray-500">@senpaiii-kun.base.eth</p>
-              </div>
-
-              <div className="flex flex-col mt-6 gap-2">
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <IdCard className="w-4 h-4" /> Developer
-                </p>
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <MapPin className="w-4 h-4" /> Albay, PH
-                </p>
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <Globe className="w-4 h-4" /> <a href="https://jayson-dev.vercel.app/" target="_blank" rel="noopener noreferrer">jayson.dev</a>
-                </p>
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">@jaysonsenpai18</a>
-                </p>
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">@swenpai</a>
-                </p>
-                <p className="text-gray-100 flex items-center gap-2 text-sm">
-                  <CalendarDays className="w-4 h-4" /> Joined September 2021
-                </p>
-              </div>
-            </div>
-            <a
-              href="./docs/Jayson Reales Resume.pdf"
-              target="_blank"
-              download="JaysonReales_Resume.pdf"
-              className="py-3 px-3 lg:px-4 lg:py-2 bg-blue-500 text-sm text-white rounded-full hover:bg-blue-600 transition-colors flex items-center"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-              Resume
-            </a>
-          </div>
-        </header>
+        <Header />
 
         <div className="mt-2">
           <div className="flex items-center justify-start border-b text-sm w-full overflow-x-auto lg:justify-start lg:gap-5">
@@ -236,7 +182,7 @@ export default function DevPortfolio() {
                   {posts.map((post) => (
                     <div key={post.id} className="bg-white dark:bg-gray-900 p-4 rounded-lg shadow">
                       <div className="flex items-start space-x-3">
-                        <img src="./images/photo1.jpg" alt="User Avatar" className="w-12 h-12 rounded-full" />
+                        <img src="./images/photo1.jpg" alt="User Avatar" className="w-12 h-12 rounded-full pointer-events-none" />
                         <div className="flex-1">
                           <div className="flex items-center justify-between space-x-2">
                             <h3 className="font-bold text-gray-900 dark:text-white text-sm">Jayson N. Reales</h3>
@@ -250,7 +196,7 @@ export default function DevPortfolio() {
                                   <img 
                                     src={image} 
                                     alt={`Post image ${index + 1}`} 
-                                    className="w-full h-full object-contain"
+                                    className="w-full h-full object-contain pointer-events-none"
                                   />
                                 </div>
                               ))}
@@ -295,7 +241,7 @@ export default function DevPortfolio() {
                         'h-128'
                       }`}
                     >
-                      <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
+                      <img src={project.image} alt={project.title} className="w-full h-48 object-cover pointer-events-none" />
                       <div className="p-4 h-full flex flex-col">
                         <h3 className="text-sm lg:text-lg font-semibold text-gray-800 dark:text-white mb-2">{project.title}</h3>
                         <p className="text-gray-600 dark:text-gray-300 mb-4 flex-grow text-sm">{project.description}</p>
