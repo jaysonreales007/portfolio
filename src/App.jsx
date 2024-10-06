@@ -98,17 +98,21 @@ export default function DevPortfolio() {
     const name = e.target[0].value;
     const email = e.target[1].value;
     const message = e.target[2].value;
+    
+    console.log(name, email, message)
 
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('message', message);
-    console.log(JSON.stringify(formData))
+    // Create an object instead of FormData
+    const templateParams = {
+      name: name,
+      email: email,
+      message: message
+    };
+    console.log(JSON.stringify(templateParams))
 
-    emailjs.send('service_qorqqe9', 'template_mmaedd6', formData, 'R2a8WVrnM9AfD8Ayx')
+    emailjs.send('service_qorqqe9', 'template_mmaedd6', templateParams, 'R2a8WVrnM9AfD8Ayx')
     .then((response) => {
-      e.target.reset(); 
-      
+      e.target.reset(); // Reset the form after successful submission
+      // Display success message
       Swal.fire({
         icon: 'success',
         title: 'Message Sent!',
