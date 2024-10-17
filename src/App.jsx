@@ -311,7 +311,7 @@ export default function DevPortfolio() {
                         >
                           <div className="relative pb-[56.25%]">
                             <img 
-                              src={`/images/${project.image}`}
+                              src={`/images${project.image}`}
                               alt={project.title} 
                               className="absolute top-0 left-0 w-full h-full object-cover pointer-events-none"
                             />
