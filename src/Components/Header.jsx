@@ -2,7 +2,7 @@ import React from 'react'
 import copyToClipboard from './copyToClipboard';
 import { RiVerifiedBadgeFill } from "react-icons/ri";
 import { IdCard, MapPin, CalendarDays } from 'lucide-react';
-import { FaFacebook  } from 'react-icons/fa';
+import { FaFacebook, FaGithub } from 'react-icons/fa';
 import { SiFarcaster } from 'react-icons/si';
 
 const Header = () => {
@@ -35,10 +35,13 @@ const Header = () => {
                 <MapPin className="w-4 h-4" /> Albay, Philippines <img src="./images/ph-flag.png" alt="ph" className="w-4 h-4 pointer-events-none" />  
               </p>
               <p className="text-gray-100 flex items-center gap-2 text-sm">
-                <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">jaysonsenpai18</a>
+                <FaFacebook className="w-4 h-4" /> <a href="https://www.facebook.com/jaysonsenpai18" target="_blank" rel="noopener noreferrer">Facebook</a>
               </p>
               <p className="text-gray-100 flex items-center gap-2 text-sm">
-                <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">swenpai</a>
+                <SiFarcaster  className="w-4 h-4" /> <a href="https://warpcast.com/swenpai" target="_blank" rel="noopener noreferrer">Farcaster</a>
+              </p>
+              <p className="text-gray-100 flex items-center gap-2 text-sm">
+                <FaGithub className="w-4 h-4" /> <a href="https://github.com/jaysonreales007" target="_blank" rel="noopener noreferrer">Github</a>
               </p>
               <p className="text-gray-100 flex items-center gap-2 text-sm">
                 <CalendarDays className="w-4 h-4" /> Joined September 2021
