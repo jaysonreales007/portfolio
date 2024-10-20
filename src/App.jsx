@@ -761,7 +761,7 @@ export default function DevPortfolio() {
                       <li className="mb-6 ml-4">
                         <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
                         <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">September 2021 - January 2022</time>
-                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">UI/UX Designer - Intern</h3>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">UI/UX Designer - On-the-Job Training</h3>
                         <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">Pixel 8 Academy</p>
                       </li>
                       <li className="mb-6 ml-4">
