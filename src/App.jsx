@@ -727,23 +727,56 @@ export default function DevPortfolio() {
                 <div className="px-4">
                   <h2 className="text-white text-lg lg:text-2xl font-bold mb-6 mt-6">About</h2>
                   <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow mb-6">
-                      <>
-                      <p className="text-gray-700 dark:text-gray-300 text-justify text-sm">
-                        Hello! I’m <b className="text-blue-500">Jayson</b>, a passionate developer hailing from the beautiful province of Albay, Philippines. I thrive on crafting dynamic web applications and continuously exploring the latest technologies that push the boundaries of innovation.
-                      </p>
+                    <p className="text-gray-800 dark:text-gray-200 text-justify text-sm">
+                      Hello! I'm <b className="text-blue-700 dark:text-blue-400">Jayson</b>, a passionate developer hailing from the beautiful province of Albay, Philippines. I thrive on crafting dynamic web applications and continuously exploring the latest technologies that push the boundaries of innovation.
+                    </p>
 
-                      <p className="text-gray-700 dark:text-gray-300 text-justify text-sm mt-3">
-                        When I’m not immersed in code, you can find me enjoying quality time with my pets or grinding through cryptocurrency airdrops. I’m also dedicated to expanding my knowledge in cryptocurrency trading and keeping up with emerging tech trends. On days when I need to recharge, I pick up my guitar to strum away the stress and find inspiration in music.
-                      </p>
+                    <p className="text-gray-800 dark:text-gray-200 text-justify text-sm mt-3">
+                      When I'm not immersed in code, you can find me enjoying quality time with my pets or grinding through cryptocurrency airdrops. I'm also dedicated to expanding my knowledge in cryptocurrency trading and keeping up with emerging tech trends. On days when I need to recharge, I pick up my guitar to strum away the stress and find inspiration in music.
+                    </p>
 
-                      <p className="text-gray-700 dark:text-gray-300 text-justify text-sm mt-3">
-                        I love stepping outside my comfort zone, whether it’s taking a leisurely walk to clear my mind or embarking on new adventures. I’m always eager to explore fresh ideas and collaborate with others who share a similar passion for creativity and technology.
-                      </p>
-                            
-                      <p className="text-gray-700 dark:text-gray-300 text-justify text-sm mt-3">
-                        Let’s connect and build something extraordinary together!
-                      </p>
-                      </>
+                    <p className="text-gray-800 dark:text-gray-200 text-justify text-sm mt-3">
+                      I love stepping outside my comfort zone, whether it's taking a leisurely walk to clear my mind or embarking on new adventures. I'm always eager to explore fresh ideas and collaborate with others who share a similar passion for creativity and technology.
+                    </p>
+                          
+                    <p className="text-gray-800 dark:text-gray-200 text-justify text-sm mt-3">
+                      Let's connect and build something extraordinary together!📧
+                    </p>
+                    <hr className="h-px my-6 bg-gray-300 border-0 dark:bg-gray-600"/>
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">Work Experience</h3>
+                    
+                    <ol className="relative border-l border-gray-300 dark:border-gray-600">
+                      <li className="mb-6 ml-4">
+                        <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">August 2024 - present</time>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">IT Instructor</h3>
+                        <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">Computer Arts & Technological College, Inc.</p>
+                      </li>
+                      <li className="mb-6 ml-4">
+                        <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">October 2022 - August 2024</time>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Web Developer</h3>
+                        <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">Computer Arts & Technological College, Inc.</p>
+                      </li>
+                      <li className="mb-6 ml-4">
+                        <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">September 2021 - January 2022</time>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">UI/UX Designer - On-the-Job Training</h3>
+                        <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">Pixel 8 Academy</p>
+                      </li>
+                      <li className="mb-6 ml-4">
+                        <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">November 2019 - Janauary 2020</time>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Waitress</h3>
+                        <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">BlueLight Bar</p>
+                      </li>
+                      <li className="ml-4">
+                        <div className="absolute w-3 h-3 bg-blue-600 rounded-full -left-1.5 border border-white dark:border-gray-900 animate-pulse"></div>
+                        <time className="mb-1 text-sm font-normal leading-none text-gray-500 dark:text-gray-400">April 2016 - September 2018</time>
+                        <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Sales Representative</h3>
+                        <p className="mb-2 text-sm font-normal text-gray-600 dark:text-gray-300">Bitis Shoe Legazpi</p>
+                      </li>
+                    </ol>
                   </div>
                 </div>
               )}
