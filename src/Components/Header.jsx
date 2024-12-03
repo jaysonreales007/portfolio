@@ -46,7 +46,7 @@ const Header = () => {
             </div>
           </div>
           <a
-            href="./docs/Jayson Reales Resume.pdf"
+            href="./docs/Resume.pdf"
             target="_blank"
             download="JaysonReales_Resume.pdf"
             className="py-3 px-3 lg:px-4 lg:py-2 bg-blue-500 text-sm text-white rounded-full hover:bg-blue-600 transition-colors flex items-center"
